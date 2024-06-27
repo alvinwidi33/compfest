@@ -51,7 +51,7 @@ function Footer() {
   return (
     <FooterContainer>
       <ContactDetails>
-        <div className="title">Contact Details:</div>
+        <div className="title">Detail Narahubung:</div>
         <div className="details">
           <p>Thomas - 08123456789</p>
           <p>Sekar - 08164829372</p>

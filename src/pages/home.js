@@ -33,7 +33,7 @@ const ContentContainer = styled.div`
 const TextContent = styled.p`
   font-family: Poppins, sans-serif;
   color: white;
-  margin: 0 16px;
+  margin: 0 32px; /* Added left and right margin */
   text-align: justify;
   flex: 1;
 `;
@@ -43,6 +43,7 @@ const ImageContent = styled.img`
   max-width: 384px;
   height: auto;
   border-radius: 8px;
+  margin: 0 32px; /* Added left and right margin */
 `;
 
 const Card = styled.div`
