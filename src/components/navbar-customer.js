@@ -44,9 +44,9 @@ function NavbarCustomer() {
       <div className="container mx-auto flex items-center justify-between font-[Poppins, sans-serif]">
         <div className="flex items-center space-x-8 ml-6">
           <img src={Logo} alt="Logo" className="h-12 w-auto" />
-          <Link to="/branch-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Cabang</Link>
-          <Link to="/user-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Reservasi</Link>
-          <Link to="/user-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Riwayat</Link>
+          <Link to="/list-salon-customer" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Cabang</Link>
+          <Link to="/list-reservation" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Reservasi</Link>
+          <Link to="/list-history" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Riwayat</Link>
         </div>
         <div className="flex items-center justify-end space-x-8 mr-6">
           <div className="flex flex-col text-right">

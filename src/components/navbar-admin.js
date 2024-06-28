@@ -46,7 +46,7 @@ function NavbarCustomer() {
           <img src={Logo} alt="Logo" className="h-12 w-auto" />
           <Link to="/list-salon-admin" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Cabang</Link>
           <Link to="/list-user" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Customer</Link>
-          <Link to="/user-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Feedback</Link>
+          <Link to="/list-feedback" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Feedback</Link>
         </div>
         <div className="flex items-center justify-end space-x-8 mr-6">
           <div className="flex flex-col text-right">
