@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import loginImage from '../components/images/salon2.jpg'; // Ensure the image import matches your file path
+import loginImage from '../components/images/salon2.jpg'; 
 import NavbarHome from '../components/navbar-home';
+import Loading from '../components/loading'; 
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +11,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -45,21 +47,17 @@ function Login() {
         }, 2000);
       } else {
         setErrorMessage(data.message || "Gagal Masuk");
-        setTimeout(() => {
-          setErrorMessage("");
-        }, 2000);
       }
     } catch (error) {
       setErrorMessage("Terjadi error. Coba lagi nanti");
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <React.Fragment>
-      <div className="absolute w-[100%]">
+      <div className="absolute w-full">
         <NavbarHome />
         <div className="flex justify-center items-center mt-28">
           <img src={loginImage} alt="login" className="w-72 h-auto rounded-bl-lg rounded-tl-lg" />
@@ -103,6 +101,7 @@ function Login() {
                 Masuk
               </button>
             </form>
+            {isLoading && <Loading />} {/* Tampilkan Loading jika isLoading true */}
             {successMessage && (
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#C3EAFD] p-4 rounded-lg shadow-lg flex items-center">
                 <p className="text-[#020030]">{successMessage}</p>

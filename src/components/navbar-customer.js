@@ -33,38 +33,20 @@ function NavbarCustomer() {
             getUser();
         }
     }, [token])
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('https://compfest-be.vercel.app/api/users/logout/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-      });
-
-      if (response.ok) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('name');
-        localStorage.removeItem('role');
-        localStorage.removeItem('email')
-        navigate('/login');
-      } else {
-        console.error("Gagal Keluar");
-      }
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
-  };
-
+    const handleLogout = () => {
+      window.localStorage.removeItem("token");
+      setTimeout(() => {
+          navigate("/");
+      }, 2000);
+    };
   return (
     <nav className="bg-white shadow-sm py-4 w-full fixed top-0 z-50">
       <div className="container mx-auto flex items-center justify-between font-[Poppins, sans-serif]">
         <div className="flex items-center space-x-8 ml-6">
           <img src={Logo} alt="Logo" className="h-12 w-auto" />
           <Link to="/branch-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar Cabang</Link>
-          <Link to="/user-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Daftar User</Link>
+          <Link to="/user-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Reservasi</Link>
+          <Link to="/user-list" className="text-[#020030] hover:text-[#8A60FF] font-medium active:text-[#020030] mt-2">Riwayat</Link>
         </div>
         <div className="flex items-center justify-end space-x-8 mr-6">
           <div className="flex flex-col text-right">

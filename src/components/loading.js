@@ -15,26 +15,32 @@ function Loading() {
         return () => clearInterval(interval);
     }, []);
 
+    const styles = {
+        loadingContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh', // Mengisi tinggi seluruh layar
+            backgroundColor: '#C3EAFD',
+            position: 'fixed', // Mengatur posisi tetap
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 9999,
+        },
+        loadingText: {
+            fontSize: '24px',
+            fontFamily: 'Poppins, sans-serif',
+            color: '#020030',
+        }
+    };
+
     return (
         <div style={styles.loadingContainer}>
             <p style={styles.loadingText}>{loadingText}</p>
         </div>
     );
 }
-
-const styles = {
-    loadingContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh', 
-        backgroundColor: '#C3EAFD',
-    },
-    loadingText: {
-        fontSize: '24px',
-        fontFamily: 'Poppins, sans-serif',
-        color: '#020030',
-    }
-};
 
 export default Loading;
