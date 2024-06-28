@@ -42,7 +42,7 @@ function Login() {
           if (data.user.role === 'Customer') {
             navigate("/list-salon-customer");
           } else if (data.user.role === 'Admin') {
-            navigate("/list-salon");
+            navigate("/list-salon-admin");
           } 
         }, 2000);
       }else {

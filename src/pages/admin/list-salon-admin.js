@@ -3,7 +3,7 @@ import NavbarAdmin from '../../components/navbar-admin';
 import Loading from '../../components/loading'; 
 import { Link } from 'react-router-dom';
 
-function ListSalon() {
+function ListSalonAdmin() {
   const [salons, setSalons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState("None");
@@ -111,4 +111,4 @@ function ListSalon() {
   );
 }
 
-export default ListSalon;
+export default ListSalonAdmin;
