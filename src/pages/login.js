@@ -6,12 +6,12 @@ import NavbarHome from '../components/navbar-home';
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [username, setUsername] = useState("");
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -23,7 +23,7 @@ function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username_or_email: usernameOrEmail, password }), 
       });
 
       const data = await response.json();
@@ -32,14 +32,15 @@ function Login() {
         window.localStorage.setItem("username", data.user.username);
         window.localStorage.setItem("name", data.user.full_name);
         window.localStorage.setItem("role", data.user.role);
+        window.localStorage.setItem("email", data.user.email);
         setSuccessMessage("Berhasil Masuk!");
 
         setTimeout(() => {
           setSuccessMessage("");
           if (data.user.role === 'Customer') {
-            navigate("/list-pertanian");
+            navigate("/list-salon-customer");
           } else if (data.user.role === 'Admin') {
-            navigate("/list-user");
+            navigate("/list-salon");
           } 
         }, 2000);
       } else {
@@ -69,13 +70,13 @@ function Login() {
                 <p className="text-xl font-normal mt-2">Masuk ke Akunmu</p>
               </div>
               <div className='mt-[148px] ml-10 text-white absolute inline-flex items-center' style={{ fontFamily: 'Poppins, sans-serif' }}>
-                <p className="ml-2">Username</p>
+                <p className="ml-2">Username atau Email</p>
               </div>
               <input
                 type="text"
                 className='mt-[178px] ml-[70px] h-9 w-[440px] rounded-3xl pl-4'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={usernameOrEmail}
+                onChange={(e) => setUsernameOrEmail(e.target.value)}
               />
               <div className="mt-1 ml-9 text-white inline-flex items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
                 <p className='ml-2 mt-1'>Password</p>
