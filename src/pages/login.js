@@ -65,7 +65,7 @@ function Login() {
           <img src={loginImage} alt="login" className="w-72 h-auto rounded-bl-lg rounded-tl-lg" />
           <div className="bg-[#8A60FF] h-[432px] w-[560px] relative rounded-tr-lg rounded-br-lg">
             <form onSubmit={handleLogin} className="relative">
-              <div className='mt-10 ml-10 text-white absolute w-full font-poppins'>
+              <div className='mt-10 ml-10 text-white absolute w-full font-[Poppins, sans-serif]'>
                 <h1 className="text-4xl font-bold">Selamat Datang!</h1>
                 <p className="text-xl font-normal mt-2">Masuk ke Akunmu</p>
               </div>

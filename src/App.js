@@ -8,6 +8,7 @@ import HubungiKami from './pages/hubungi-kami';
 import Register from './pages/register';
 import ListSalon from './pages/admin/list-salon';
 import ListSalonCustomer from './pages/customer/list-salon-customer';
+import ProtectedRoute from './pages/ProtectedRoute';
 function App() {
   return (
     <Router>
@@ -17,7 +18,7 @@ function App() {
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/list-register" element={<HubungiKami/>}></Route>
         <Route path="/list-salon" element={<ListSalon/>}></Route>
-        <Route path="/list-salon-customer" element={<ListSalonCustomer/>}></Route>
+        <Route path="/list-salon-customer" element={<ProtectedRoute child={<ListSalonCustomer/>}/>}/>
       </Routes>
     </Router>
   );
