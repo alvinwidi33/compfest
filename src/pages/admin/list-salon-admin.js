@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import NavbarAdmin from '../../components/navbar-admin';
-import Loading from '../../components/loading'; 
+import Loading from '../../components/loading'; // Adjust import path if necessary
 import { Link } from 'react-router-dom';
-
 function ListSalonAdmin() {
-  const [salons, setSalons] = useState([]);
+   const [salons, setSalons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState("None");
   const [locations, setLocations] = useState([]);
@@ -73,11 +72,9 @@ function ListSalonAdmin() {
           ))}
         </select>
         <Link to="/add-salon">
-          <button
-            className="bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium"
-          >
-            Tambah Cabang
-          </button>
+        <button className="ml-3 bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium mb-4">
+        Tambah Cabang
+        </button>
         </Link>
       </div>
       {isLoading ? (
@@ -98,7 +95,7 @@ function ListSalonAdmin() {
                   <p className="mb-2 text-sm">Jam Buka: {formatTime(salon.opening_time)} - {formatTime(salon.closing_time)}</p>
                   <Link to={`/list-salon/${salon.id}`}>
                   <button className="ml-36 bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium mb-4">
-                    Ubah
+                    Pesan
                   </button>
                   </Link>
                 </div>
@@ -110,5 +107,4 @@ function ListSalonAdmin() {
     </React.Fragment>
   );
 }
-
 export default ListSalonAdmin;

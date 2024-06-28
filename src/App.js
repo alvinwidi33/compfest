@@ -9,7 +9,7 @@ import Register from './pages/register';
 import AddSalon from './pages/admin/add-salon';
 import ListSalonCustomer from './pages/customer/list-salon-customer';
 import ProtectedRoute from './pages/ProtectedRoute';
-import ListUser from './pages/admin/list-user';
+import ListCustomer from './pages/admin/list-customer';
 import UpdateSalon from './pages/admin/update-salon';
 import ListSalonAdmin from './pages/admin/list-salon-admin';
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Route path="/list-salon-admin" element={<ProtectedRoute child={<ListSalonAdmin/>}/>}/>
         <Route path="/list-salon/:id" element={<ProtectedRoute child={<UpdateSalon/>}/>}/>
         <Route path="/add-salon" element={<ProtectedRoute child={<AddSalon/>}/>}/>
-        <Route path="/list-user" element={<ProtectedRoute child={<ListUser/>}/>}/>
+        <Route path="/list-user" element={<ProtectedRoute child={<ListCustomer/>}/>}/>
         <Route path="/list-salon-customer" element={<ProtectedRoute child={<ListSalonCustomer/>}/>}/>
       </Routes>
     </Router>
