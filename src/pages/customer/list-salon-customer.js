@@ -53,7 +53,7 @@ function ListSalonCustomer() {
       <NavbarCustomer />
       <h1 className="mt-28 text-center text-3xl font-semibold font-[Poppins, sans-serif] text-[#020030]">Daftar Salon</h1>
       {isLoading ? (
-        <Loading /> // Display loading component while fetching data
+        <Loading /> 
       ) : (
         <div className="flex justify-center mb-12">
           <div className="grid grid-cols-3 gap-6 mt-6">

@@ -8,7 +8,7 @@ const ConfirmationModal = ({ show, onClose, onConfirm, message }) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white rounded-lg p-8 shadow-lg">
-                <h2 className="text-lg font-semibold mb-4 text-[#055C5B]">Konfirmasi</h2>
+                <h2 className="text-lg font-semibold mb-4 text-[#020030]">Konfirmasi</h2>
                 <p className="mb-4">{message}</p>
                 <div className="flex justify-end space-x-4">
                     <button

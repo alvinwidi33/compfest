@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import NavbarAdmin from '../../components/navbar-admin';
 import Loading from '../../components/loading';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import ConfirmationModal from '../../components/confirmation-modal';
 
 const supabaseUrl = 'https://bxeiejekgnstwrltydba.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4ZWllamVrZ25zdHdybHR5ZGJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0NTkyMzEsImV4cCI6MjAzNTAzNTIzMX0.911Jt0faURzETXekRM2_hQNyYTDsvpXRc0qmw6U-rq0';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-function AddSalon() {
+function UpdateSalon() {
+    const { id } = useParams(); // Assuming you're using React Router for getting id from URL
     const [loading, setLoading] = useState(true);
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -24,12 +25,30 @@ function AddSalon() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
+        const fetchBranchDetails = async () => {
+            try {
+                const response = await fetch(`https://compfest-be.vercel.app/api/branch/get-branch-detail/${id}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: 'Token ' + window.localStorage.getItem("token"),
+                    },
+                });
 
-        return () => clearTimeout(timer);
-    }, []);
+                if (response.ok) {
+                    const data = await response.json();
+                    setBranch(data); // Assuming data structure matches branch state
+                    setLoading(false);
+                } else {
+                    console.error('Failed to fetch branch details');
+                }
+            } catch (error) {
+                console.error('Error fetching branch details:', error);
+            }
+        };
+
+        fetchBranchDetails();
+    }, [id]);
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -54,33 +73,44 @@ function AddSalon() {
     const handleConfirm = async () => {
         setShowModal(false);
         const token = window.localStorage.getItem("token");
-        setLoading(false);
+        setLoading(true); // Set loading state before API call
 
         try {
-            const imageFile = branch.image;
-            const imageExt = imageFile.name.split('.').pop();
-            const imageName = `${Date.now()}.${imageExt}`;
-            const { data, error: uploadError } = await supabase.storage
-                .from('branch')
-                .upload(imageName, imageFile);
+            let imageUrl = branch.image;
 
-            if (uploadError) {
-                throw uploadError;
+            // Check if image file is being updated
+            if (branch.image instanceof File) {
+                const imageFile = branch.image;
+                const imageExt = imageFile.name.split('.').pop();
+                const imageName = `${Date.now()}.${imageExt}`;
+
+                // Upload image to Supabase
+                const { data, error: uploadError } = await supabase.storage
+                    .from('branch')
+                    .upload(imageName, imageFile);
+
+                if (uploadError) {
+                    throw uploadError;
+                }
+
+                // Get public URL of uploaded image
+                const { publicURL, error: publicUrlError } = await supabase
+                    .storage
+                    .from('branch')
+                    .getPublicUrl(imageName);
+
+                if (publicUrlError) {
+                    throw publicUrlError;
+                }
+
+                imageUrl = publicURL;
             }
 
-            const { data: publicURL, error: publicUrlError } = supabase
-                .storage
-                .from('branch')
-                .getPublicUrl(imageName);
+            const updatedBranch = { ...branch, image: imageUrl };
 
-            if (publicUrlError) {
-                throw publicUrlError;
-            }
-
-            const updatedBranch = { ...branch, image: publicURL.publicUrl };
-
-            const response = await fetch('https://compfest-be.vercel.app/api/branch/add-branch/', {
-                method: 'POST',
+            // Update branch details in backend
+            const response = await fetch(`https://compfest-be.vercel.app/api/branch/update-branch/${id}/`, {
+                method: 'PATCH', // Assuming PATCH method for updating
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Token ' + token,
@@ -89,7 +119,7 @@ function AddSalon() {
             });
 
             if (response.ok) {
-                setSuccessMessage("Berhasil menambah cabang!");
+                setSuccessMessage("Berhasil mengubah cabang!");
                 setErrorMessage("");
                 setTimeout(() => {
                     setSuccessMessage("");
@@ -97,12 +127,13 @@ function AddSalon() {
                 }, 3000);
             } else {
                 const errorData = await response.json();
-                setErrorMessage(errorData.message || "❌ Gagal Menambah Cabang");
+                setErrorMessage(errorData.message || "❌ Gagal Mengubah Cabang");
                 setTimeout(() => {
                     setErrorMessage("");
                 }, 2000);
             }
         } catch (error) {
+            console.error("Error updating branch:", error);
             setErrorMessage("❌ Terjadi error. Coba lagi nanti");
             setTimeout(() => {
                 setErrorMessage("");
@@ -120,7 +151,7 @@ function AddSalon() {
             <NavbarAdmin />
             <div style={{ marginLeft: "10%", position: "absolute" }} className="w-9/12">
                 <div className="w-full mt-24">
-                    <h1 className="ml-24 font-semibold text-[#020030] text-center font-[Poppins, sans-serif] text-2xl">Form Tambah Cabang</h1>
+                    <h1 className="ml-24 font-semibold text-[#020030] text-center font-[Poppins, sans-serif] text-2xl">Form Ubah Cabang</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="flex space-x-4 mb-4 ml-20 mt-4">
                             <div>
@@ -183,7 +214,6 @@ function AddSalon() {
                                     className='custom-file-input bg-[#EFF5F5] mt-1 h-9 w-[900px] rounded-3xl pl-4'
                                     accept="image/png, image/jpeg"
                                     onChange={handleChange}
-                                    required
                                 />
                             </div>
                         </div>
@@ -220,7 +250,7 @@ function AddSalon() {
                 show={showModal}
                 onClose={() => setShowModal(false)}
                 onConfirm={handleConfirm}
-                message="Apakah Anda yakin ingin membuat user?"
+                message="Apakah Anda yakin ingin mengubah cabang?"
             />
             <style>
                 {`
@@ -248,4 +278,4 @@ function AddSalon() {
     );
 }
 
-export default AddSalon;
+export default UpdateSalon;

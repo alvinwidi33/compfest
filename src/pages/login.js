@@ -45,11 +45,18 @@ function Login() {
             navigate("/list-salon");
           } 
         }, 2000);
-      } else {
-        setErrorMessage(data.message || "Gagal Masuk");
+      }else {
+        setErrorMessage(data.message || "❌ Gagal Masuk");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 2000);
       }
     } catch (error) {
-      setErrorMessage("Terjadi error. Coba lagi nanti");
+      setErrorMessage("❌ Terjadi error. Coba lagi nanti");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+
     } finally {
       setIsLoading(false);
     }
