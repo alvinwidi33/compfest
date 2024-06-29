@@ -153,7 +153,7 @@ function UpdateSalon() {
                     <form onSubmit={handleSubmit}>
                         <div className="flex space-x-4 mb-4 ml-20 mt-4">
                             <div>
-                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Inter, sans-serif' }}>Nama Cabang*</p>
+                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Inter, sans-serif' }}>Nama Cabang</p>
                                 <input
                                     type="text"
                                     name="branch_name"
@@ -164,7 +164,7 @@ function UpdateSalon() {
                                 />
                             </div>
                             <div>
-                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Inter, sans-serif' }}>Lokasi*</p>
+                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Inter, sans-serif' }}>Lokasi</p>
                                 <input
                                     type="text"
                                     name="branch_location"
@@ -177,7 +177,7 @@ function UpdateSalon() {
                         </div>
                         <div className="flex space-x-4 mb-4 ml-20 mt-4">
                             <div>
-                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Poppins, sans-serif' }}>Jam Buka*</p>
+                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Poppins, sans-serif' }}>Jam Buka</p>
                                 <input
                                     type="time"
                                     name="opening_time"
@@ -190,7 +190,7 @@ function UpdateSalon() {
                                 />
                             </div>
                             <div>
-                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Poppins, sans-serif' }}>Jam Tutup*</p>
+                                <p className="text-[#020030] font-medium ml-1" style={{ fontFamily: 'Poppins, sans-serif' }}>Jam Tutup</p>
                                 <input
                                     type="time"
                                     name="closing_time"
@@ -203,7 +203,7 @@ function UpdateSalon() {
                                 />
                             </div>
                         </div>
-                        <p className="text-[#020030] font-medium mt-2 ml-20" style={{ fontFamily: 'Inter, sans-serif' }}>Foto*</p>
+                        <p className="text-[#020030] font-medium mt-2 ml-20" style={{ fontFamily: 'Inter, sans-serif' }}>Foto</p>
                         <div className="flex flex-col space-y-4 mb-4 ml-20 mt-4">
                             <div>
                                 <input
