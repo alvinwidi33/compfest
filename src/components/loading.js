@@ -20,9 +20,9 @@ function Loading() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '100vh', // Mengisi tinggi seluruh layar
+            height: '100vh',
             backgroundColor: '#C3EAFD',
-            position: 'fixed', // Mengatur posisi tetap
+            position: 'fixed', 
             top: 0,
             left: 0,
             right: 0,

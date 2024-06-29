@@ -5,10 +5,6 @@ import Loading from '../../components/loading';
 import { useNavigate, Link } from 'react-router-dom';
 import ConfirmationModal from '../../components/confirmation-modal';
 
-const supabaseUrl = 'https://bxeiejekgnstwrltydba.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4ZWllamVrZ25zdHdybHR5ZGJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0NTkyMzEsImV4cCI6MjAzNTAzNTIzMX0.911Jt0faURzETXekRM2_hQNyYTDsvpXRc0qmw6U-rq0';
-const supabase = createClient(supabaseUrl, supabaseKey);
-
 function AddSalon() {
     const [loading, setLoading] = useState(true);
     const [successMessage, setSuccessMessage] = useState("");
@@ -22,7 +18,9 @@ function AddSalon() {
         closing_time: ''
     });
     const navigate = useNavigate();
-
+    const supabaseUrl = 'https://bxeiejekgnstwrltydba.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4ZWllamVrZ25zdHdybHR5ZGJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0NTkyMzEsImV4cCI6MjAzNTAzNTIzMX0.911Jt0faURzETXekRM2_hQNyYTDsvpXRc0qmw6U-rq0';
+    const supabase = createClient(supabaseUrl, supabaseKey);
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
@@ -54,7 +52,7 @@ function AddSalon() {
     const handleConfirm = async () => {
         setShowModal(false);
         const token = window.localStorage.getItem("token");
-        setLoading(false);
+        setLoading(true);
 
         try {
             const imageFile = branch.image;
@@ -175,12 +173,12 @@ function AddSalon() {
                             </div>
                         </div>
                         <p className="text-[#020030] font-medium mt-2 ml-20" style={{ fontFamily: 'Inter, sans-serif' }}>Foto*</p>
-                        <div className="flex flex-col space-y-4 mb-4 ml-20 mt-4">
+                        <div className="flex flex-col space-y-4 mb-4 ml-20 mt-2">
                             <div>
                                 <input
                                     type="file"
                                     name="image"
-                                    className='custom-file-input bg-[#EFF5F5] mt-1 h-9 w-[900px] rounded-3xl pl-4'
+                                    className='custom-file-input bg-[#EFF5F5] h-9 w-[900px] rounded-3xl pl-4'
                                     accept="image/png, image/jpeg"
                                     onChange={handleChange}
                                     required

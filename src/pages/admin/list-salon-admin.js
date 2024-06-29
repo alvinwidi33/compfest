@@ -3,7 +3,7 @@ import NavbarAdmin from '../../components/navbar-admin';
 import Loading from '../../components/loading'; // Adjust import path if necessary
 import { Link } from 'react-router-dom';
 function ListSalonAdmin() {
-   const [salons, setSalons] = useState([]);
+  const [salons, setSalons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState("None");
   const [locations, setLocations] = useState([]);

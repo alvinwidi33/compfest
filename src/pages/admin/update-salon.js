@@ -5,12 +5,9 @@ import Loading from '../../components/loading';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import ConfirmationModal from '../../components/confirmation-modal';
 
-const supabaseUrl = 'https://bxeiejekgnstwrltydba.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4ZWllamVrZ25zdHdybHR5ZGJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0NTkyMzEsImV4cCI6MjAzNTAzNTIzMX0.911Jt0faURzETXekRM2_hQNyYTDsvpXRc0qmw6U-rq0';
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 function UpdateSalon() {
-    const { id } = useParams(); // Assuming you're using React Router for getting id from URL
+    const { id } = useParams(); 
     const [loading, setLoading] = useState(true);
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -23,7 +20,9 @@ function UpdateSalon() {
         closing_time: ''
     });
     const navigate = useNavigate();
-
+    const supabaseUrl = 'https://bxeiejekgnstwrltydba.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4ZWllamVrZ25zdHdybHR5ZGJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0NTkyMzEsImV4cCI6MjAzNTAzNTIzMX0.911Jt0faURzETXekRM2_hQNyYTDsvpXRc0qmw6U-rq0';
+    const supabase = createClient(supabaseUrl, supabaseKey);
     useEffect(() => {
         const fetchBranchDetails = async () => {
             try {
@@ -37,7 +36,7 @@ function UpdateSalon() {
 
                 if (response.ok) {
                     const data = await response.json();
-                    setBranch(data); // Assuming data structure matches branch state
+                    setBranch(data); 
                     setLoading(false);
                 } else {
                     console.error('Failed to fetch branch details');
@@ -73,18 +72,15 @@ function UpdateSalon() {
     const handleConfirm = async () => {
         setShowModal(false);
         const token = window.localStorage.getItem("token");
-        setLoading(true); // Set loading state before API call
+        setLoading(true); 
 
         try {
             let imageUrl = branch.image;
 
-            // Check if image file is being updated
             if (branch.image instanceof File) {
                 const imageFile = branch.image;
                 const imageExt = imageFile.name.split('.').pop();
                 const imageName = `${Date.now()}.${imageExt}`;
-
-                // Upload image to Supabase
                 const { data, error: uploadError } = await supabase.storage
                     .from('branch')
                     .upload(imageName, imageFile);
