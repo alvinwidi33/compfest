@@ -93,9 +93,9 @@ function ListSalonAdmin() {
                   <h2 className="text-xl font-bold">{salon.branch_name}</h2>
                   <p className="mb-2 text-sm">Lokasi: {salon.branch_location}</p>
                   <p className="mb-2 text-sm">Jam Buka: {formatTime(salon.opening_time)} - {formatTime(salon.closing_time)}</p>
-                  <Link to={`/list-salon/${salon.id}`}>
+                  <Link to={`/list-salon-admin/${salon.id}`}>
                   <button className="ml-36 bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium mb-4">
-                    Pesan
+                    Ubah
                   </button>
                   </Link>
                 </div>

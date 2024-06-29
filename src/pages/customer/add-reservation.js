@@ -200,7 +200,7 @@ function AddReservation() {
         <img
           src={salon.image}
           alt={salon.branch_name}
-          className="w-120 h-60 object-cover rounded-md mt-4 ml-20"
+          className="w-96 h-60 object-cover rounded-md mt-4 ml-20"
         />
         <div className="col-auto ml-6">
           <div className="flex mt-4">

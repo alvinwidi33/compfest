@@ -93,7 +93,6 @@ function UpdateSalon() {
                     throw uploadError;
                 }
 
-                // Get public URL of uploaded image
                 const { publicURL, error: publicUrlError } = await supabase
                     .storage
                     .from('branch')
@@ -108,9 +107,8 @@ function UpdateSalon() {
 
             const updatedBranch = { ...branch, image: imageUrl };
 
-            // Update branch details in backend
             const response = await fetch(`https://compfest-be.vercel.app/api/branch/update-branch/${id}/`, {
-                method: 'PATCH', // Assuming PATCH method for updating
+                method: 'PATCH', 
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Token ' + token,
@@ -123,7 +121,7 @@ function UpdateSalon() {
                 setErrorMessage("");
                 setTimeout(() => {
                     setSuccessMessage("");
-                    navigate("/list-salon");
+                    navigate("/list-salon-admin");
                 }, 3000);
             } else {
                 const errorData = await response.json();

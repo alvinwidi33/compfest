@@ -15,7 +15,6 @@ import UpdateSalon from './pages/admin/update-salon';
 import ListSalonAdmin from './pages/admin/list-salon-admin';
 import AddReservation from './pages/customer/add-reservation';
 import ListReservation from './pages/customer/list-reservation';
-import UpdateReservation from './pages/customer/update-reservation';
 import ListHistory from './pages/customer/list-history';
 function App() {
   return (
@@ -33,7 +32,6 @@ function App() {
         <Route path="/list-salon-customer" element={<ProtectedRoute child={<ListSalonCustomer/>}/>}/>
         <Route path="/list-salon-customer/:id" element={<ProtectedRoute child={<AddReservation/>}/>}/>
         <Route path="/list-reservation" element={<ProtectedRoute child={<ListReservation/>}/>}/>
-        <Route path="/list-reservation/:id" element={<ProtectedRoute child={<UpdateReservation/>}/>}/>
         <Route path="/list-history" element={<ProtectedRoute child={<ListHistory/>}/>}/>
       </Routes>
     </Router>
