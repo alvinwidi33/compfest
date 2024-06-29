@@ -167,33 +167,35 @@ function ListHistory() {
           <table className="w-[1100px] divide-y divide-gray-200 rounded-lg overflow-hidden ml-20 text-center font-[Poppins, sans-serif]">
             <thead className="bg-[#8A60FF]">
               <tr>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Cabang</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Tipe Layanan</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Tanggal</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Jam</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Rating</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Ulasan</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Action</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Cabang</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Tipe Layanan</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Tanggal</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Jam</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Rating</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Ulasan</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {reservations.map((reservation, index) => (
                 <tr key={reservation.id} className={index % 2 === 1 ? 'bg-[#C3EAFD]' : 'bg-white'}>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.branch?.branch_name}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.type_of_service}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{formatDate(reservation.datetime_start)}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{formatTime(reservation.datetime_start, reservation.datetime_end)}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.branch?.branch_name}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.type_of_service}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{formatDate(reservation.datetime_start)}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{formatTime(reservation.datetime_start, reservation.datetime_end)}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">
                     {Array.from({ length: 5 }, (_, index) => (
-                        <span key={index}>
+                      <span key={index}>
                         {index < reservation.rating ? '★' : '☆'}
-                        </span>
+                      </span>
                     ))}
-                    </td>
-                    <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.feedback}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">
+                  </td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">
+                    {reservation.rating === 0 || reservation.feedback === null ? 'Belum Mengisi' : reservation.feedback}
+                  </td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">
                     <button
-                        className={`px-4 py-2 rounded-md font-medium ${
+                        className={`py-2 px-4 rounded-md font-medium ${
                             reservation.feedback !== null || reservation.rating !== 0
                             ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
                             : 'bg-[#FEDACC] text-[#020030] hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC]'

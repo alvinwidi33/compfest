@@ -64,7 +64,7 @@ function ListFeedback(props) {
         />
         <select
           name="rating"
-          className="h-9 w-28 bg-[#C3EAFD] mt-6 rounded-3xl pl-4 ml-4 custom-dropdown text-[#020030]"
+          className="h-9 w-28 bg-[#C3EAFD] mt-6 rounded-3xl pl-4 ml-4 custom-dropdown text-center text-[#020030]"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
         >

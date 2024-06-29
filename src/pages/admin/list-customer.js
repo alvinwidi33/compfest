@@ -89,7 +89,7 @@ function ListCustomer() {
         />
         <select
           name="member"
-          className="h-9 w-28 bg-[#C3EAFD] mt-6 rounded-3xl pl-4 ml-4 custom-dropdown text-[#020030]"
+          className="h-9 w-40 text-center bg-[#C3EAFD] mt-6 rounded-3xl pl-4 ml-4 custom-dropdown text-[#020030]"
           value={member}
           onChange={(e) => setMember(e.target.value)}
         >
@@ -101,23 +101,21 @@ function ListCustomer() {
           <table className="w-[1100px] divide-y divide-gray-200 rounded-lg overflow-hidden ml-20 text-center">
             <thead className="bg-[#8A60FF]">
               <tr>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Nama</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Email</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Username</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">No. HP</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Status</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Nama</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Email</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Username</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">No. HP</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Status</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {filteredUsers.map((user, index) => (
                 <tr key={user.user?.user_id} className={index % 2 === 1 ? 'bg-[#C3EAFD]' : 'bg-white'}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {user.user?.full_name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#020030]">{user.user?.email}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#020030]">{user.user?.username}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-[#020030]">{user.user?.phone_number}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <td className="py-4 whitespace-nowrap text-sm font-medium text-gray-900">{user.user?.full_name}</td>
+                  <td className="py-4 whitespace-nowrap text-sm text-[#020030]">{user.user?.email}</td>
+                  <td className="py-4 whitespace-nowrap text-sm text-[#020030]">{user.user?.username}</td>
+                  <td className="py-4 whitespace-nowrap text-sm text-[#020030]">{user.user?.phone_number}</td>
+                  <td className="py-4 whitespace-nowrap text-sm">
                     <button
                       onClick={() => handleStatusChange(user.customer_id, user.status)}
                       className={`text-sm px-4 py-2 rounded-md ${

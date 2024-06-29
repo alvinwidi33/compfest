@@ -59,12 +59,12 @@ function ListSalonCustomer() {
     <React.Fragment>
       <NavbarCustomer />
       <h1 className="mt-28 text-center text-3xl font-semibold font-[Poppins, sans-serif] text-[#020030]">Daftar Salon</h1>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4 font-[Poppins, sans-serif]">
         <select
           name="lokasi"
           value={selectedLocation}
           onChange={handleLocationChange}
-          className='h-9 w-28 bg-[#C3EAFD] rounded-3xl pl-4 font-[Poppins, sans-serif] custom-dropdown mr-4 text-[#020030]'
+          className='text-center h-9 w-28 bg-[#C3EAFD] rounded-3xl pl-4 font-[Poppins, sans-serif] custom-dropdown mr-4 text-[#020030]'
         >
           <option value="None">Lokasi</option>
           {locations.map(location => (

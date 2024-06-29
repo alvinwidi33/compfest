@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavbarCustomer from '../../components/navbar-customer';
 import Loading from '../../components/loading';
 import { format, parseISO } from 'date-fns';
-import { id } from 'date-fns/locale'; // Import Indonesian locale
+import { id } from 'date-fns/locale'; 
 
 function ListReservation() {
   const [activeUser, setActiveUser] = useState({});
@@ -12,7 +12,6 @@ function ListReservation() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      setIsLoading(true);
       try {
         const response = await fetch(
           `https://compfest-be.vercel.app/api/users/get-user-by-token/${token}/`,
@@ -44,8 +43,6 @@ function ListReservation() {
 
   const fetchReservations = async () => {
     if (!activeUser.customer_id) return [];
-
-    setIsLoading(true);
     try {
       const response = await fetch(
         `https://compfest-be.vercel.app/api/reservation/get-list-reserve-customer/${activeUser.customer_id}/`,
@@ -81,7 +78,6 @@ function ListReservation() {
   }, [token, activeUser]);
 
   const handleStatusChange = async (id, statusType, currentValue) => {
-    setIsLoading(true);
     try {
       const response = await fetch(
         `https://compfest-be.vercel.app/api/reservation/patch-reserve/${id}/`,
@@ -96,8 +92,8 @@ function ListReservation() {
       );
 
       if (response.ok) {
-        // Re-fetch reservations after updating status
         await fetchReservations();
+        setIsLoading(true);
       } else {
         console.error('Failed to update reservation status');
       }
@@ -134,21 +130,23 @@ function ListReservation() {
           <table className="w-[1100px] divide-y divide-gray-200 rounded-lg overflow-hidden ml-20 text-center">
             <thead className="bg-[#8A60FF]">
               <tr>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Cabang</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Tipe Layanan</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Tanggal</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Jam</th>
-                <th className="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">Action</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Cabang</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Lokasi</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Tipe Layanan</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Tanggal</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Jam</th>
+                <th className="py-3 text-xs font-medium text-white uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {reservations.map((reservation, index) => (
                 <tr key={reservation.id} className={index % 2 === 1 ? 'bg-[#C3EAFD]' : 'bg-white'}>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.branch?.branch_name}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900">{reservation.type_of_service}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{formatDate(reservation.datetime_start)}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">{formatTime(reservation.datetime_start, reservation.datetime_end)}</td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-[#020030]">
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.branch?.branch_name}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{reservation.branch?.branch_location}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-gray-900">{reservation.type_of_service}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{formatDate(reservation.datetime_start)}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">{formatTime(reservation.datetime_start, reservation.datetime_end)}</td>
+                  <td className="py-2 whitespace-nowrap text-sm text-[#020030]">
                     <button
                       onClick={() => handleStatusChange(reservation.id, 'is_cancel', reservation.is_cancel)}
                       disabled={reservation.is_cancel || reservation.is_done}
