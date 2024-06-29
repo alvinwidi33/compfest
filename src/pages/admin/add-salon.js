@@ -93,7 +93,7 @@ function AddSalon() {
                 setErrorMessage("");
                 setTimeout(() => {
                     setSuccessMessage("");
-                    navigate("/list-salon");
+                    navigate("/list-salon-admin");
                 }, 3000);
             } else {
                 const errorData = await response.json();
@@ -188,7 +188,7 @@ function AddSalon() {
                             </div>
                         </div>
                         <div className="flex space-x-4 mb-4 ml-[430px]">
-                            <Link to="/list-salon">
+                            <Link to="/list-salon-admin">
                                 <button
                                     type="button"
                                     className="bg-[#C3EAFD] text-[#020030] py-2 px-4 rounded-md hover:bg-[#8A60FF] hover:text-white active:bg-[#C3EAFD] active:text-[#020030] transition"
@@ -200,7 +200,7 @@ function AddSalon() {
                                 type="submit"
                                 className="bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium"
                             >
-                                Konfirmasi
+                                Tambah
                             </button>
                         </div>
                     </form>

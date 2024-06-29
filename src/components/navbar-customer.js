@@ -6,39 +6,50 @@ function NavbarCustomer() {
   const [activeUser, setActiveUser] = useState({});
   const token = window.localStorage.getItem("token");
   const navigate = useNavigate();
-  useEffect(() => {
-        const getUser = async () => {
-            try {
-                const response = await fetch(
-                    `https://compfest-be.vercel.app/api/users/get-user-by-token/${token}/`,
-                    {
-                        method: "GET",
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
+  const role = window.localStorage.getItem("role");
 
-                if (response.ok) {
-                    const json_response = await response.json();
-                    setActiveUser(json_response);
-                } else {
-                    console.error("Failed to fetch user data");
-                }
-            } catch (error) {
-                console.error("Error fetching user data:", error);
-            }
-        };
-        if (token) {
-            getUser();
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await fetch(
+          `https://compfest-be.vercel.app/api/users/get-user-by-token/${token}/`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          const json_response = await response.json();
+          setActiveUser(json_response);
+        } else {
+          console.error("Failed to fetch user data");
         }
-    }, [token])
-    const handleLogout = () => {
-      window.localStorage.removeItem("token");
-      setTimeout(() => {
-          navigate("/");
-      }, 2000);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     };
+
+    if (token) {
+      getUser();
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (role !== "Customer") {
+      navigate("/login");
+    }
+  }, [role, navigate]);
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("token");
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+  };
+
   return (
     <nav className="bg-white shadow-sm py-4 w-full fixed top-0 z-50">
       <div className="container mx-auto flex items-center justify-between font-[Poppins, sans-serif]">

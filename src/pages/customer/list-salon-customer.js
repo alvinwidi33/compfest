@@ -3,7 +3,7 @@ import NavbarCustomer from '../../components/navbar-customer';
 import Loading from '../../components/loading'; // Adjust import path if necessary
 import { Link } from 'react-router-dom';
 function ListSalonCustomer() {
-   const [salons, setSalons] = useState([]);
+  const [salons, setSalons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState("None");
   const [locations, setLocations] = useState([]);
@@ -61,7 +61,7 @@ function ListSalonCustomer() {
       <h1 className="mt-28 text-center text-3xl font-semibold font-[Poppins, sans-serif] text-[#020030]">Daftar Salon</h1>
       <div className="flex justify-center mt-4">
         <select
-          name="daerah"
+          name="lokasi"
           value={selectedLocation}
           onChange={handleLocationChange}
           className='h-9 w-28 bg-[#C3EAFD] rounded-3xl pl-4 font-[Poppins, sans-serif] custom-dropdown mr-4 text-[#020030]'
@@ -88,7 +88,7 @@ function ListSalonCustomer() {
                   <h2 className="text-xl font-bold">{salon.branch_name}</h2>
                   <p className="mb-2 text-sm">Lokasi: {salon.branch_location}</p>
                   <p className="mb-2 text-sm">Jam Buka: {formatTime(salon.opening_time)} - {formatTime(salon.closing_time)}</p>
-                  <Link to={`/list-salon/${salon.id}`}>
+                  <Link to={`/list-salon-customer/${salon.id}`}>
                   <button className="ml-36 bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium mb-4">
                     Pesan
                   </button>

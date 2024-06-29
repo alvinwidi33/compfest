@@ -8,7 +8,7 @@ const FooterContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #C3EAFD;
   width: 100%;
   box-sizing: border-box;
   
