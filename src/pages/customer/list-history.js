@@ -96,7 +96,6 @@ function ListHistory() {
       );
 
       if (response.ok) {
-        // Re-fetch reservations after updating status
         await fetchReservations();
       } else {
         console.error('Failed to update reservation status');
@@ -114,7 +113,11 @@ function ListHistory() {
   };
 
   const handleFeedbackSubmit = async ({ rating, feedback }) => {
-    setIsLoading(true);
+    if (feedback === "" || rating === 0 ||feedback === null){
+        alert("Mohon mengisi rating dan feedback!");
+        return;
+      }
+      setIsLoading(true);
     try {
       const response = await fetch(
         `https://compfest-be.vercel.app/api/reservation/patch-reserve/${currentReservationId}/`,
@@ -129,10 +132,6 @@ function ListHistory() {
       );
 
       if (response.ok) {
-        if (feedback === null || rating === 0){
-          alert("Mohon mengisi rating dan feedback!")
-          return;
-        }
         await fetchReservations();
       } else {
         console.error('Failed to submit feedback');
@@ -199,16 +198,16 @@ function ListHistory() {
                   </td>
                   <td className="py-2 whitespace-nowrap text-sm text-[#020030]">
                     <button
-                        className={`py-2 px-4 rounded-md font-medium ${
-                            reservation.feedback !== null || reservation.rating !== 0
-                            ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                            : 'bg-[#FEDACC] text-[#020030] hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC]'
-                        }`}
-                        disabled={reservation.feedback !== null || reservation.rating !== 0 || reservation.is_cancel === true}
-                        onClick={() => handleOpenFeedback(reservation.id)}
-                        >
-                        Ulasan
-                        </button>
+                      className={`py-2 px-4 rounded-md font-medium ${
+                        reservation.feedback !== null || reservation.rating !== 0 || reservation.is_cancel
+                        ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                        : 'bg-[#FEDACC] text-[#020030] hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC]'
+                      } ${reservation.feedback !== null || reservation.rating !== 0 || reservation.is_cancel ? 'pointer-events-none' : ''}`}
+                      disabled={reservation.feedback !== null || reservation.rating !== 0 || reservation.is_cancel}
+                      onClick={() => handleOpenFeedback(reservation.id)}
+                    >
+                      Ulasan
+                    </button>
                   </td>
                 </tr>
               ))}

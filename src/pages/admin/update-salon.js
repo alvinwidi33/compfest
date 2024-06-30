@@ -71,6 +71,12 @@ function UpdateSalon() {
 
     const handleConfirm = async () => {
         setShowModal(false);
+        const openingTime = new Date(`1970-01-01T${branch.opening_time}:00`);
+        const closingTime = new Date(`1970-01-01T${branch.closing_time}:00`);
+        if (openingTime > closingTime){
+            alert("Jam buka tidak boleh lebih dari jam tutup")
+            return;
+        }
         const token = window.localStorage.getItem("token");
         setLoading(true); 
 
