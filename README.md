@@ -3,7 +3,10 @@
 ### React.Js Framework
 1. Buka terminal pada directory proyek
 2. Jalankan ```npm start``` atau ```npm run start```
-
+3. Lakukan register dengan menggunakan email asli
+4. Setelah register, buka email untuk melakukan verifikasi email (untuk non gmail terkirimnya agak lama)
+5. Login baru berhasil ketika email sudah diverifikasi, silakan dicoba
+   
 Note :
   1. Harus sudah menginstall npm dan dependency lain yang dibutuhkan.
   2. Jika ada dependency yang belum terinstall pada local biasanya terjadi error. Contoh : belum menginstall react-icons, tailwinds
