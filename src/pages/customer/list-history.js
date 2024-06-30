@@ -129,6 +129,10 @@ function ListHistory() {
       );
 
       if (response.ok) {
+        if (feedback === null || rating === 0){
+          alert("Mohon mengisi rating dan feedback!")
+          return;
+        }
         await fetchReservations();
       } else {
         console.error('Failed to submit feedback');

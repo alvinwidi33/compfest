@@ -212,7 +212,7 @@ function UpdateSalon() {
                             </div>
                         </div>
                         <div className="flex space-x-4 mb-4 ml-[430px]">
-                            <Link to="/list-salon">
+                            <Link to="/list-salon-admin">
                                 <button
                                     type="button"
                                     className="bg-[#C3EAFD] text-[#020030] py-2 px-4 rounded-md hover:bg-[#8A60FF] hover:text-white active:bg-[#C3EAFD] active:text-[#020030] transition"
