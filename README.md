@@ -1,5 +1,6 @@
-# Compfest Frontend REACT.JS
+# Compfest Frontend 
 
+### React.Js Framework
 1. Buka terminal pada directory proyek
 2. Jalankan ```npm start``` atau ```npm run start```
 
