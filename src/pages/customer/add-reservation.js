@@ -26,7 +26,6 @@ function AddReservation() {
     const [hours, minutes] = timeString.split(':');
     return `${hours}:${minutes}`;
   }
-
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -88,41 +87,41 @@ function AddReservation() {
   }, [id, token]);
 
   const handleInputChange = (e) => {
-  const { name, value } = e.target;
+    const { name, value } = e.target;
 
-  if (name === 'date' || name === 'time') {
-    const today = new Date().toISOString().split('T')[0];
-    const timePart = name === 'date' ? reserve.datetime_start.split('T')[1] || '00:00' : value;
-    const datePart = name === 'date' ? value : reserve.datetime_start.split('T')[0] || today;
+    if (name === 'date' || name === 'time') {
+      const today = new Date().toISOString().split('T')[0];
+      const timePart = name === 'date' ? reserve.datetime_start.split('T')[1] || '00:00' : value;
+      const datePart = name === 'date' ? value : reserve.datetime_start.split('T')[0] || today;
 
-    if (!timePart || !datePart) {
-      return; 
+      if (!timePart || !datePart) {
+        return;
+      }
+
+      const datetimeStart = `${datePart}T${timePart}`;
+
+      if (isNaN(new Date(datetimeStart))) {
+        return;
+      }
+
+      const datetimeEnd = new Date(datetimeStart);
+      datetimeEnd.setHours(datetimeEnd.getHours() + 1);
+
+      const offset = datetimeEnd.getTimezoneOffset() * 60000;
+      const adjustedDatetimeEnd = new Date(datetimeEnd.getTime() - offset);
+
+      setReserve(prevState => ({
+        ...prevState,
+        datetime_start: datetimeStart,
+        datetime_end: adjustedDatetimeEnd.toISOString().slice(0, 19),
+      }));
+    } else {
+      setReserve(prevState => ({
+        ...prevState,
+        [name]: value,
+      }));
     }
-
-    const datetimeStart = `${datePart}T${timePart}`;
-
-    if (isNaN(new Date(datetimeStart))) {
-      return; 
-    }
-
-    const datetimeEnd = new Date(datetimeStart);
-    datetimeEnd.setHours(datetimeEnd.getHours() + 1);
-
-    const offset = datetimeEnd.getTimezoneOffset() * 60000;
-    const adjustedDatetimeEnd = new Date(datetimeEnd.getTime() - offset);
-
-    setReserve(prevState => ({
-      ...prevState,
-      datetime_start: datetimeStart,
-      datetime_end: adjustedDatetimeEnd.toISOString().slice(0, 19),
-    }));
-  } else {
-    setReserve(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
-  }
-};
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -131,20 +130,23 @@ function AddReservation() {
 
   const handleConfirm = async () => {
     setShowModal(false);
-    setIsLoading(false);
+    setIsLoading(true);
     const currentTime = new Date().toISOString();
     const reserveStartTime = new Date(reserve.datetime_start).toISOString();
-    
+
     if (reserveStartTime < currentTime) {
       alert("Waktu tidak boleh kurang dari saat ini");
+      setIsLoading(false);
       return;
     }
 
     const reserveDateTime = new Date(reserve.datetime_start);
     const reserveTime = `${reserveDateTime.getHours()}:${reserveDateTime.getMinutes()}`;
-
-    if (reserveTime < salon.opening_time || reserveTime > salon.closing_time) {
+    const reserveCloseTime = new Date(reserve.datetime_start);
+    const closeReserveTime = `${reserveCloseTime.getHours()}:${reserveDateTime.getMinutes()}`
+    if (reserveTime < salon.opening_time || reserveTime > salon.closing_time || closeReserveTime > salon.closing_time) {
       alert('Waktu yang kamu pilih diluar jam buka');
+      setIsLoading(false);
       return;
     }
 
@@ -220,7 +222,7 @@ function AddReservation() {
                 name="type_of_service"
                 value={reserve.type_of_service}
                 onChange={handleInputChange}
-                className="border border-[#C3EAFD] border-solid h-9 w-40 bg-[#C3EAFD] rounded-3xl pl-4 font-[Poppins, sans-serif] custom-dropdown mr-4 text-[#020030]"
+                className="border border-[#C3EAFD] border-solid h-9 w-52 bg-[#C3EAFD] rounded-3xl pl-4 font-[Poppins, sans-serif] custom-dropdown mr-4 text-[#020030]"
               >
                 <option value="None">Tipe Pelayanan</option>
                 <option value="Haircuts and styling">Haircuts and styling</option>
@@ -245,7 +247,7 @@ function AddReservation() {
                 className="bg-[#C3EAFD] rounded-3xl h-9 w-40 text-center border border-[#C3EAFD] border-solid ml-4"
               />
             </div>
-            <div className="flex space-x-4 mt-10 ml-36">
+            <div className="flex space-x-4 mt-10 ml-48">
               <Link to="/list-salon-customer">
                 <button
                   type="button"
