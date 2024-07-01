@@ -163,6 +163,8 @@ function UpdateSalon() {
                                     value={branch.branch_name}
                                     onChange={handleChange}
                                     required
+                                    min="09:00"
+                                    max="21:00"
                                 />
                             </div>
                             <div>
@@ -174,6 +176,8 @@ function UpdateSalon() {
                                     value={branch.branch_location}
                                     onChange={handleChange}
                                     required
+                                    min="09:00"
+                                    max="21:00"
                                 />
                             </div>
                         </div>
