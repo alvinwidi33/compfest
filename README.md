@@ -10,7 +10,7 @@
 7. Login dulu sebagai admin username : thomas.n pw: Admin123
 8. Menuju ke halaman customer dan ubah status customer menjadi member
 9. Setelah itu kembali login ke customer baru bisa melakukan reservasi
-10. Pada soal tertera bahwa treatment dilakukan selama 1 jam. Maka, ketika salon tutup pukul 21.00, pada pukul 20.01, customer sudah tidak bisa reservasi
+10. Pada soal tertera bahwa treatment dilakukan selama 1 jam. Maka, ketika salon tutup pukul 21.00, customer tidak bisa memilih jam reservasi 20.01, karena akan selesai melebihi jam 21.00
 11. setelah reservasi berhasil dibuat, customer bisa men-cancel reservasi atau menyelesaikan reservasi
 12. jika reservasi di cancel atau treatment selesai bisa muncul di halaman riwayat reservasi
 13. customer yang melakukan cancel tidak bisa memberikan ulasan, hanya yang reservasinya selesai yang bisa memberikan ulasan
