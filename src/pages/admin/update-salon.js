@@ -230,7 +230,7 @@ function UpdateSalon() {
                                 type="submit"
                                 className="bg-[#FEDACC] text-[#020030] px-4 py-2 rounded-md hover:bg-[#8A60FF] hover:text-white active:text-[#020030] active:bg-[#FEDACC] font-medium"
                             >
-                                Konfirmasi
+                                Ubah
                             </button>
                         </div>
                     </form>

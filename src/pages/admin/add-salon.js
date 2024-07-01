@@ -159,8 +159,6 @@ function AddSalon() {
                                     className='bg-[#EFF5F5] mt-2 h-9 w-[440px] rounded-3xl pl-4'
                                     value={branch.opening_time}
                                     onChange={handleChange}
-                                    min="09:00"
-                                    max="21:00"
                                     required
                                 />
                             </div>
@@ -172,8 +170,6 @@ function AddSalon() {
                                     className='bg-[#EFF5F5] h-9 w-[440px] rounded-3xl pl-4 mt-2'
                                     value={branch.closing_time}
                                     onChange={handleChange}
-                                    min="09:00"
-                                    max="21:00"
                                     required
                                 />
                             </div>
