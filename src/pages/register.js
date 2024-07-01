@@ -61,34 +61,40 @@ function Register() {
                 <p className="text-xl font-normal mt-2">Lengkapi data dirimu</p>
               </div>
               <div className='mt-[148px] ml-10 text-white absolute inline-flex items-center' style={{ fontFamily: 'Poppins, sans-serif' }}>
-                <p className="ml-2">Nama Lengkap</p>
+                <p className="ml-2">Nama Lengkap*</p>
               </div>
               <input
                 type="text"
                 className='mt-[178px] ml-[70px] h-9 w-[440px] rounded-3xl pl-4'
                 value={full_name}
                 onChange={(e) => setFullName(e.target.value)}
+                required
+                placeholder="Masukkan nama lengkapmu"
               />
               <div className="mt-1 ml-9 text-white inline-flex items-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                <p className='ml-2 mt-1'>Email</p>
+                <p className='ml-2 mt-1'>Email*</p>
               </div>
               <input
                 type="email"
                 className='mt-1 ml-[70px] h-9 w-[440px] rounded-3xl pl-4'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Masukkan emailmu"
               />
               <div className="mt-1 ml-9 text-white inline-flex items-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                <p className='ml-2 mt-1'>Username</p>
+                <p className='ml-2 mt-1'>Username*</p>
               </div>
               <input
                 type="username"
                 className='mt-1 ml-[70px] h-9 w-[440px] rounded-3xl pl-4'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
+                placeholder="Buat usernamemu"
               />
               <div className="mt-1 ml-9 text-white inline-flex items-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                <p className='ml-2 mt-1'>Password</p>
+                <p className='ml-2 mt-1'>Password*</p>
               </div>
               <div className="relative mt-1 ml-[70px] w-[440px]">
                 <input
@@ -96,6 +102,8 @@ function Register() {
                   className='h-9 w-full rounded-3xl pl-4 pr-10'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Buat passwordmu"
                 />
                 <button
                   type="button"
@@ -106,13 +114,14 @@ function Register() {
                 </button>
               </div>
               <div className="mt-1 ml-9 text-white inline-flex items-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                <p className='ml-2 mt-1'>Nomor Telepon</p>
+                <p className='ml-2 mt-1'>Nomor Telepon*</p>
               </div>
               <input
                 type="text"
                 className='mt-1 ml-[70px] h-9 w-[440px] rounded-3xl pl-4'
                 value={phone_number}
                 onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Masukkan nomor teleponmu"
               />
               <p className="text-white font-[Poppins, sans-serif] ml-48 mt-4">Sudah punya Akun? <span> </span>
                 <Link to="/login" className='underline'>Masuk</Link>

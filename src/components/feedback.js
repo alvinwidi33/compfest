@@ -22,7 +22,7 @@ function Feedback({ isOpen, onClose, onSubmit }) {
       <div className="bg-white p-6 rounded-lg shadow-lg font-[Poppins, sans-serif]">
         <h2 className="text-2xl font-semibold text-[#020030] text-center mb-4">Berikan Ulasanmu</h2>
         <div className="mb-4">
-          <label className="block text-[#020030] text-sm font-bold mb-2">Rating:</label>
+          <label className="block text-[#020030] text-sm font-bold mb-2">Rating<span className='text-[#FF605A]'>*</span></label>
           <div className="flex space-x-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
@@ -36,7 +36,7 @@ function Feedback({ isOpen, onClose, onSubmit }) {
           </div>
         </div>
         <div className="mb-4">
-          <label className="block text-[#020030] text-sm font-bold mb-2">Ulasan:</label>
+          <label className="block text-[#020030] text-sm font-bold mb-2">Ulasan<span className='text-[#FF605A]'>*</span></label>
           <textarea
             className="shadow appearance-none border rounded w-full py-2 px-3 text-[#020030] leading-tight focus:outline-none focus:shadow-outline"
             rows="4"

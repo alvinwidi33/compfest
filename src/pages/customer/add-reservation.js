@@ -134,9 +134,8 @@ function AddReservation() {
     setIsLoading(false);
     const currentTime = new Date().toISOString();
     const reserveStartTime = new Date(reserve.datetime_start).toISOString();
-
+    
     if (reserveStartTime < currentTime) {
-      setShowModal(false);
       alert("Waktu tidak boleh kurang dari saat ini");
       return;
     }
@@ -274,8 +273,8 @@ function AddReservation() {
         </div>
       )}
       {errorMessage && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 p-4 rounded-lg shadow-lg flex items-center">
-          <p className="text-white">{errorMessage}</p>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#FEDACC] p-4 rounded-lg shadow-lg flex items-center">
+          <p className="text-[#020030]">{errorMessage}</p>
         </div>
       )}
       <ConfirmationModal

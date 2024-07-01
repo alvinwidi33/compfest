@@ -82,6 +82,8 @@ function Login() {
                 className='mt-[178px] ml-[70px] h-9 w-[440px] rounded-3xl pl-4'
                 value={usernameOrEmail}
                 onChange={(e) => setUsernameOrEmail(e.target.value)}
+                required
+                placeholder="Masukkan username atau emailmu"
               />
               <div className="mt-1 ml-9 text-white inline-flex items-center" style={{ fontFamily: 'Inter, sans-serif' }}>
                 <p className='ml-2 mt-1'>Password</p>
@@ -92,6 +94,8 @@ function Login() {
                   className='h-9 w-full rounded-3xl pl-4 pr-10'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Masukkan passwordmu"
                 />
                 <button
                   type="button"
