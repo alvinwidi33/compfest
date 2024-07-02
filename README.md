@@ -4,16 +4,17 @@
 1. Buka terminal pada directory proyek
 2. Jalankan ```npm start``` atau ```npm run start``` atau buka di link **https://seasalon.vercel.app**
 3. Lakukan register dengan menggunakan email asli
-4. Setelah register, buka email untuk melakukan verifikasi email (terkirimnya mungkin agak lama) 
-5. Login baru berhasil ketika email sudah diverifikasi
-6. Sesuai dengan soal hanya customer dengan status Member yang bisa melakukan reservasi
-7. Login dulu sebagai admin username : thomas.n pw: Admin123
-8. Menuju ke halaman customer dan ubah status customer menjadi member
-9. Setelah itu kembali login ke customer baru bisa melakukan reservasi
-10. Pada soal tertera bahwa treatment dilakukan selama 1 jam. Maka, ketika salon tutup pukul 21.00, customer tidak bisa memilih jam reservasi 20.01, karena akan selesai melebihi jam 21.00
-11. setelah reservasi berhasil dibuat, customer bisa men-cancel reservasi atau menyelesaikan reservasi
-12. jika reservasi di cancel atau treatment selesai bisa muncul di halaman riwayat reservasi
-13. customer yang melakukan cancel tidak bisa memberikan ulasan, hanya yang reservasinya selesai yang bisa memberikan ulasan
+4. Setelah register, buka email untuk melakukan verifikasi email (terkirimnya mungkin agak lama)
+5. Buka di spam atau di inbox (biasanya di spam) ubah jadi not-spam terlebih dahulu
+6. Login baru berhasil ketika email sudah diverifikasi
+7. Sesuai dengan soal hanya customer dengan status Member yang bisa melakukan reservasi
+8. Login dulu sebagai admin username : thomas.n pw: Admin123
+9. Menuju ke halaman customer dan ubah status customer menjadi member
+10. Setelah itu kembali login ke customer baru bisa melakukan reservasi
+11. Pada soal tertera bahwa treatment dilakukan selama 1 jam. Maka, ketika salon tutup pukul 21.00, customer tidak bisa memilih jam reservasi 20.01, karena akan selesai melebihi jam 21.00
+12. setelah reservasi berhasil dibuat, customer bisa men-cancel reservasi atau menyelesaikan reservasi
+13. jika reservasi di cancel atau treatment selesai bisa muncul di halaman riwayat reservasi
+14. customer yang melakukan cancel tidak bisa memberikan ulasan, hanya yang reservasinya selesai yang bisa memberikan ulasan
    
 Note :
   1. Harus sudah menginstall npm dan dependency lain yang dibutuhkan.
