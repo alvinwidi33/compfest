@@ -4,7 +4,7 @@
 1. Buka terminal pada directory proyek
 2. Jalankan ```npm start``` atau ```npm run start``` atau buka di link **https://seasalon.vercel.app**
 3. Lakukan register dengan menggunakan email asli
-4. Setelah register, buka email untuk melakukan verifikasi email (terkirimnya mungkin agak lama)
+4. Setelah register, buka email untuk melakukan verifikasi email (terkirimnya mungkin agak lama untuk pertama kali)
 5. Buka di spam atau di inbox (biasanya di spam) ubah jadi not-spam terlebih dahulu
 6. Login baru berhasil ketika email sudah diverifikasi
 7. Sesuai dengan soal hanya customer dengan status Member yang bisa melakukan reservasi
