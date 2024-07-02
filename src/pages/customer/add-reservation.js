@@ -144,10 +144,6 @@ function AddReservation() {
     const reserveTime = `${reserveDateTime.getHours()}:${reserveDateTime.getMinutes()}`;
     const reserveCloseTime = new Date(reserve.datetime_end);
     const closeReserveTime = `${reserveCloseTime.getHours()}:${reserveDateTime.getMinutes()}`
-    console.log(reserveDateTime);
-    console.log(reserveTime);
-    console.log(reserveCloseTime);
-    console.log(closeReserveTime);
     if (reserveTime < salon.opening_time || reserveTime > salon.closing_time || closeReserveTime > salon.closing_time) {
       alert('Waktu yang kamu pilih diluar jam buka');
       setIsLoading(false);
