@@ -53,7 +53,7 @@ function ListFeedback(props) {
     <React.Fragment>
       <NavbarAdmin />
       <div className="container mx-auto">
-        <h1 className="mt-24 text-3xl font-semibold text-[#020030] text-center">Daftar Customer</h1>
+        <h1 className="mt-24 text-3xl font-semibold text-[#020030] text-center">Daftar Feedback</h1>
         <input
           type="text"
           name="name"
